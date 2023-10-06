@@ -24,7 +24,7 @@ Linelist *InitLineList()
 {
     Linelist *head = (Linelist *)malloc(sizeof(Linelist));
     head->booked = InitBookedList();
-    InitBookingList(&(head->booking));
+    InitBookingList(head->booking);
     head->next = NULL;
     return head;
 }
@@ -58,7 +58,7 @@ void PrintLineList(Linelist *L)
     Linelist *p = L->next;
     while(p != NULL)
     {
-        printf("航班号：%lu\t目的地：%s\t日期：%d-%d-%d\t星期：%d\t时间：%d:%d\t价格：%f\t折扣：%d\t座位数：%d\t剩余座位数：%d\n",p->line_no,p->destination,p->date[0],p->date[1],p->date[2],p->week,p->time[0],p->time[1],p->price,p->discount,p->max_seat,p->remain_seat);
+        printf("航班号：%lu\t目的地：%s\t日期：%d-%d-%d\t星期：%d\t时间：%d:%d\t价格：%f\t折扣：%f\t座位数：%d\t剩余座位数：%d\n",p->line_no,p->destination,p->date[0],p->date[1],p->date[2],p->week,p->time[0],p->time[1],p->price,p->discount,p->max_seat,p->remain_seat);
         p = p->next;
     }
 }
@@ -71,7 +71,7 @@ void PrintLineList(Linelist *L)
 */
 void PrintLine(Linelist *p)
 {
-    printf("航班号：%lu\t目的地：%s\t日期：%d-%d-%d\t星期：%d\t时间：%d:%d\t价格：%f\t折扣：%d\t座位数：%d\t剩余座位数：%d\n",p->line_no,p->destination,p->date[0],p->date[1],p->date[2],p->week,p->time[0],p->time[1],p->price,p->discount,p->max_seat,p->remain_seat);
+    printf("航班号：%lu\t目的地：%s\t日期：%d-%d-%d\t星期：%d\t时间：%d:%d\t价格：%f\t折扣：%f\t座位数：%d\t剩余座位数：%d\n",p->line_no,p->destination,p->date[0],p->date[1],p->date[2],p->week,p->time[0],p->time[1],p->price,p->discount,p->max_seat,p->remain_seat);
 }
 
 /*
@@ -207,7 +207,7 @@ void DestroyLineList(Linelist *L)
     while(q != NULL)
     {
         DestroyBookedList(q->booked);
-        DestroyBookingList(&(q->booking)); 
+        DestroyBookingList(q->booking); 
         free(p);
         p = q;
         q = q->next;
@@ -234,7 +234,7 @@ void ReadLineList(Linelist *L,char *filename)
     while(!feof(fp))
     {
         q = (Linelist *)malloc(sizeof(Linelist));
-        fscanf(fp,"%lu %s %d %d %d %d %d %d %f %d %d %d\n",&(q->line_no),q->destination,&(q->date[0]),&(q->date[1]),&(q->date[2]),&(q->week),&(q->time[0]),&(q->time[1]),&(q->price),&(q->discount),&(q->max_seat),&(q->remain_seat));
+        fscanf(fp,"%lu %s %d %d %d %d %d %d %f %f %d %d\n",&(q->line_no),q->destination,&(q->date[0]),&(q->date[1]),&(q->date[2]),&(q->week),&(q->time[0]),&(q->time[1]),&(q->price),&(q->discount),&(q->max_seat),&(q->remain_seat));
         q->next = NULL;
         p->next = q;
         p = q;
@@ -259,12 +259,23 @@ void WriteLineList(Linelist *L,char *filename)
     Linelist *p = L->next;
     while(p != NULL)
     {
-        fprintf(fp,"%lu %s %d %d %d %d %d %d %f %d %d %d\n",p->line_no,p->destination,p->date[0],p->date[1],p->date[2],p->week,p->time[0],p->time[1],p->price,p->discount,p->max_seat,p->remain_seat);
+        fprintf(fp,"%lu %s %d %d %d %d %d %d %f %f %d %d\n",p->line_no,p->destination,p->date[0],p->date[1],p->date[2],p->week,p->time[0],p->time[1],p->price,p->discount,p->max_seat,p->remain_seat);
         p = p->next;
     }
     fclose(fp);
 }
 
+//测试代码
+int main()
+{
+    Linelist *L = InitLineList();
+    printf("航班链表是否为空：%d\n",isEmptyLineList(L));
+    printf("航班链表长度：%d\n",LengthLineList(L));
+
+    
+    return 0;
+
+}
 
 
 

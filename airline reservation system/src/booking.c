@@ -255,40 +255,40 @@ void DataupBookingList(BookingList *L,char *filename)
     fclose(fp);
 }
 
-//测试代码
-int main()
-{
-    BookingList L;
-    InitBookingList(&L);
-    Booking e;
-    e.certificate_no = 123456789;
-    e.line_no = 123;
-    e.date[0] = 2020;
-    e.date[1] = 12;
-    e.date[2] = 12;
-    e.time[0] = 12;
-    e.time[1] = 12;
-    e.amount = 1;
-    strcpy(e.name,"zhangsan");
-    EnBookingList(&L,&e);
-    e.certificate_no = 987654321;
-    e.line_no = 321;
-    e.date[0] = 2020;
-    e.date[1] = 12;
-    e.date[2] = 12;
-    e.time[0] = 12;
-    e.time[1] = 12;
-    e.amount = 1;
-    strcpy(e.name,"lisi");
-    EnBookingList(&L,&e);
-    TraverseBookingList(&L,PrintBooking);
-    printf("length:%d\n",LengthBookingList(&L));
-    DeBookingList(&L,&e);
-    TraverseBookingList(&L,PrintBooking);
-    printf("length:%d\n",LengthBookingList(&L));
-    DestroyBookingList(&L);
-    printf("length:%d\n",LengthBookingList(&L));
+// //测试代码
+// int main()
+// {
+//     BookingList L;
+//     InitBookingList(&L);
+//     Booking e;
+//     e.certificate_no = 123456789;
+//     e.line_no = 123;
+//     e.date[0] = 2020;
+//     e.date[1] = 12;
+//     e.date[2] = 12;
+//     e.time[0] = 12;
+//     e.time[1] = 12;
+//     e.amount = 1;
+//     strcpy(e.name,"zhangsan");
+//     EnBookingList(&L,&e);
+//     e.certificate_no = 987654321;
+//     e.line_no = 321;
+//     e.date[0] = 2020;
+//     e.date[1] = 12;
+//     e.date[2] = 12;
+//     e.time[0] = 12;
+//     e.time[1] = 12;
+//     e.amount = 1;
+//     strcpy(e.name,"lisi");
+//     EnBookingList(&L,&e);
+//     TraverseBookingList(&L,PrintBooking);
+//     printf("length:%d\n",LengthBookingList(&L));
+//     DeBookingList(&L,&e);
+//     TraverseBookingList(&L,PrintBooking);
+//     printf("length:%d\n",LengthBookingList(&L));
+//     DestroyBookingList(&L);
+//     printf("length:%d\n",LengthBookingList(&L));
 
 
-    return 0;
-}
+//     return 0;
+// }

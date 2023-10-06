@@ -1,0 +1,3 @@
+/workspaces/Data-Structures-and-Algorithms-Term-Project/airline reservation system/build/CMakeFiles/main.dir
+/workspaces/Data-Structures-and-Algorithms-Term-Project/airline reservation system/build/CMakeFiles/edit_cache.dir
+/workspaces/Data-Structures-and-Algorithms-Term-Project/airline reservation system/build/CMakeFiles/rebuild_cache.dir

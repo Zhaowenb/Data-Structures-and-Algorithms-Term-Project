@@ -270,30 +270,30 @@ void DestroyBookedList(Booked *L)
     }
 }
 
-// 测试函数
-int main()
-{
-    Booked *L = InitBookedList();
-    printf("是否为空：%d\n",isEmptyBookedList(L));
-    printf("长度：%d\n",LengthBookedList(L));
-    Booked b1 = {1,"张三",123456789,1,1,NULL};
-    Booked b2 = {2,"李四",987654321,2,2,NULL};
-    Booked b3 = {3,"王五",123456789,3,3,NULL};
-    Booked b4 = {4,"赵六",987654321,4,4,NULL};
-    InsertBookedList(L,1,&b1);
-    InsertBookedList(L,2,&b2);
-    InsertBookedList(L,3,&b3);
+// // 测试函数
+// int main()
+// {
+//     Booked *L = InitBookedList();
+//     printf("是否为空：%d\n",isEmptyBookedList(L));
+//     printf("长度：%d\n",LengthBookedList(L));
+//     Booked b1 = {1,"张三",123456789,1,1,NULL};
+//     Booked b2 = {2,"李四",987654321,2,2,NULL};
+//     Booked b3 = {3,"王五",123456789,3,3,NULL};
+//     Booked b4 = {4,"赵六",987654321,4,4,NULL};
+//     InsertBookedList(L,1,&b1);
+//     InsertBookedList(L,2,&b2);
+//     InsertBookedList(L,3,&b3);
 
-    InsertBookedList(L,4,&b4);
-    PrintBookedList(L);
-    printf("是否为空：%d\n",isEmptyBookedList(L));
-    printf("长度：%d\n",LengthBookedList(L));
-    printf("第2个元素：%d\n",GetBooked(L,2));
-    PrintBooked(getBookedByIndex(L,2));
-    printf("第3个元素：%d\n",GetBooked(L,3));
-    printf("第4个元素：%d\n",GetBooked(L,4));
-    return 0;
-}
+//     InsertBookedList(L,4,&b4);
+//     PrintBookedList(L);
+//     printf("是否为空：%d\n",isEmptyBookedList(L));
+//     printf("长度：%d\n",LengthBookedList(L));
+//     printf("第2个元素：%d\n",GetBooked(L,2));
+//     PrintBooked(getBookedByIndex(L,2));
+//     printf("第3个元素：%d\n",GetBooked(L,3));
+//     printf("第4个元素：%d\n",GetBooked(L,4));
+//     return 0;
+// }
 
 
 

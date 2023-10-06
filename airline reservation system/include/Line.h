@@ -32,7 +32,7 @@ typedef struct Linelist
     //booking:预定的订单
     BookingList *booking;
     //next:指向下一个航班的指针
-    struct Node *next;
+    struct Linelist *next;
 }Linelist;
 
 /*

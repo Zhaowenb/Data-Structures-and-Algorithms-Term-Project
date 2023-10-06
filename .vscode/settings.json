@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "booking.h": "c",
+        "booked.h": "c"
+    }
+}
