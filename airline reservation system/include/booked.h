@@ -105,10 +105,10 @@ int InsertBookedList(Booked *L, int index, Booked *b);
 /*
 创建booked链表
 函数名：CreateBookedList
-参数：csv文件地址, int n
-返回值：单链表
+参数：Booked *B，csv文件地址
+返回值：无
 */
-Booked *CreateBookedList(char *filename, int n);
+void CreateBookedList(Booked *B, char *filename);
 
 /*
 更新csv文件

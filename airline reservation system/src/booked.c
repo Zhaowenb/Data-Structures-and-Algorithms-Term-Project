@@ -172,29 +172,27 @@ int InsertBookedList(Booked *L, int index, Booked *b)
 /*
 创建booked链表
 函数名：CreateBookedList
-参数：csv文件地址, int n
-返回值：单链表
+参数：Booked *B，csv文件地址
+返回值：无
 */
-Booked *CreateBookedList(char *filename, int n)
+void CreateBookedList(Booked *B, char *filename)
 {
-    Booked *L = InitBookedList();
     FILE *fp = fopen(filename,"r");
     if(fp == NULL)
     {
         printf("文件打开失败！\n");
-        return NULL;
+        return;
     }
-    Booked *p = L;
-    for(int i = 0; i < n; i++)
+    Booked *p = B;
+    while(!feof(fp))
     {
-        Booked *b_new = (Booked *)malloc(sizeof(Booked));
-        fscanf(fp,"%lu,%[^,],%lu,%d,%d\n",&b_new->orderform_no,b_new->name,&b_new->certificate_no,&b_new->amount,&b_new->seat_no);
-        b_new->next = NULL;
-        p->next = b_new;
-        p = p->next;
+        Booked *b = (Booked *)malloc(sizeof(Booked));
+        fscanf(fp,"%lu,%[^,],%lu,%d,%d\n",&b->orderform_no,b->name,&b->certificate_no,&b->amount,&b->seat_no);
+        b->next = NULL;
+        p->next = b;
+        p = b;
     }
     fclose(fp);
-    return L;
 }
 
 /*

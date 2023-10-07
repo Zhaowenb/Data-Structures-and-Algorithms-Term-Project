@@ -187,6 +187,8 @@ void DeleteLineList(Linelist *L,unsigned long line_no)
         {
             p->next = q->next;
             free(q);
+            DestroyBookedList(q->booked);
+            DestroyBookingList(q->booking);
             return;
         }
         p = q;
@@ -234,10 +236,18 @@ void ReadLineList(Linelist *L,char *filename)
     while(!feof(fp))
     {
         q = (Linelist *)malloc(sizeof(Linelist));
-        fscanf(fp,"%lu %s %d %d %d %d %d %d %f %f %d %d\n",&(q->line_no),q->destination,&(q->date[0]),&(q->date[1]),&(q->date[2]),&(q->week),&(q->time[0]),&(q->time[1]),&(q->price),&(q->discount),&(q->max_seat),&(q->remain_seat));
+        char *BookedFileName = (char *)malloc(sizeof(char)*100);
+        char *BookingFileName = (char *)malloc(sizeof(char)*100);
+        fscanf(fp,"%lu %s %d %d %d %d %d %d %f %f %d %d %s %s\n",&(q->line_no),q->destination,&(q->date[0]),&(q->date[1]),&(q->date[2]),&(q->week),&(q->time[0]),&(q->time[1]),&(q->price),&(q->discount),&(q->max_seat),&(q->remain_seat),BookedFileName,BookingFileName);  
         q->next = NULL;
         p->next = q;
         p = q;
+        q->booked = InitBookedList();
+        InitBookingList(q->booking);
+        CreateBookedList(q->booked,BookedFileName);
+        InputBookingList(q->booking,BookingFileName);
+        free(BookedFileName);
+        free(BookingFileName);
     }
     fclose(fp);
 }
