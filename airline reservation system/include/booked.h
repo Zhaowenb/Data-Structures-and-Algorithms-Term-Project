@@ -26,7 +26,7 @@ typedef struct Booked
     //订单号
     long orderform_no;
     //姓名
-    char name[20];
+    char name[100];
     //身份证号
     long certificate_no;
     //购买票数
