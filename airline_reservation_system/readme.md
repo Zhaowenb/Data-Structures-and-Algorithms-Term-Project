@@ -6,12 +6,11 @@
 
 
 ### 编译运行
-#### ***注意*** ：
-    本技术文档只提供Ubuntu20.04编译方法。
-
-
-
-
+#### ***注意 ： 本技术文档只提供Ubuntu22.04编译方法。***
+### 编译：    
+    cd airline_reservation_system/build
+    cmake ..
+    make
 
 ### 文件结构
 - [airline reservation system（航空订票系统）](../airline%20reservation%20system)

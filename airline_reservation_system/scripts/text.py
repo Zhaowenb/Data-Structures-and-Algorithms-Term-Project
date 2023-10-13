@@ -51,7 +51,10 @@ def data_plane(x):
     #生成数据
     data = []
     art.tprint("PLANE     DATA",font="random")
-
+    path_booked = "../References/Booked"
+    os.mkdir(path_booked)
+    path_booking = "../References/Booking"
+    os.mkdir(path_booking)
     for i in track(range(x)):
         destination = fake.city()
         plane_no = i+1
@@ -68,14 +71,12 @@ def data_plane(x):
         data.append([destination, plane_no, date, week, time, line_no, price, discount, max_seat, remain_seat])
         booked=data_booked(max_seat-remain_seat,plane_no)
         booking=data_booking()
-        path = "../References/Booked"+ str(plane_no)
-        os.mkdir(path)
-        with open(path+"/booked"+str(plane_no)+".csv", 'w', newline='') as csvfile:
+        
+        with open(path_booked+"/booked"+str(plane_no)+".csv", 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerows(booked)
-        path = "../References/Booking"+ str(plane_no)
-        os.mkdir(path)
-        with open(path+"/booking"+str(plane_no)+".csv", 'w', newline='') as csvfile:
+        
+        with open(path_booking+"/booking"+str(plane_no)+".csv", 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerows(booking)
     return data
