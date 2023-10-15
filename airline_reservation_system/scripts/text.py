@@ -13,37 +13,35 @@ end_date = "+1y"  #结束日期
 Max_seat = 300  #最大座位数
 min_seat = 10  #最小座位数
 
-def data_booked(x,date):
+def data_booked(seat,date):
     fake = Faker()
     #生成数据
     data = []
     art.tprint("BOOKED    DATA",font="random")
-    for i in tqdm(range(x)):
-        order_no = date*1000+i+1
+    for i in tqdm(range(seat)):
+        order_no = str(date)+str(i+1)
         name = fake.name()
         certificate = fake.ssn()
         certificate_n = str(certificate).split('-')
-        certificate_no = int(certificate_n[0]+certificate_n[1]+certificate_n[2])
+        certificate_no = certificate_n[0]+certificate_n[1]+certificate_n[2]
         amout = 1
         seat_no = i+1
         data.append([order_no, name, certificate_no, amout, seat_no])
     return data
 
-def data_booking():
+def data_booking(line_no,datestr,timestr):
     fake = Faker()
     #生成数据
     data = []
     art.tprint("BOOKING     DATA",font="random")
     x = fake.random_digit_not_null()
     for i in tqdm(range(x)):
-        order_no = i+1
         name = fake.name()
         certificate = fake.ssn()
         certificate_n = str(certificate).split('-')
         certificate_no = int(certificate_n[0]+certificate_n[1]+certificate_n[2])
-        amout = 1
-        seat_no = i+1
-        data.append([order_no, name, certificate_no, amout, seat_no])
+        amout = 1       
+        data.append([ name, certificate_no,line_no, datestr, timestr, amout])
     return data
 
 def data_plane(x):
@@ -60,18 +58,18 @@ def data_plane(x):
         plane_no = i+1
         date = fake.date_between(start_date=start_date, end_date=end_date) 
         datestr = str(date).split('-')
+        date_str = datestr[0]+"-"+datestr[1]+"-"+datestr[2]
         week = date.weekday()
         time = fake.time()
         timestr = str(time).split(':')
-        line_no = int(datestr[0])*10000000000+int(datestr[1])*100000000+int(datestr[2])*1000000+int(timestr[0])*10000+int(timestr[1])*100+plane_no
+        time_str = timestr[0]+":"+timestr[1]
+        line_no = datestr[0][2]+datestr[0][3]+datestr[1]+datestr[2]+timestr[0]+timestr[1]+str(plane_no) 
         price = fake.pyfloat(left_digits=3, right_digits=2, positive=True)
         discount = fake.pyfloat(left_digits=1, right_digits=2, positive=True)
         max_seat = fake.random_int(min=min_seat, max=Max_seat)
         remain_seat = numpy.random.randint(0, max_seat)
-        data.append([destination, plane_no, date, week, time, line_no, price, discount, max_seat, remain_seat])
-        booked=data_booked(max_seat-remain_seat,plane_no)
-        booking=data_booking()
-        
+        booked=data_booked((max_seat-remain_seat),line_no)
+        booking=data_booking(line_no,date_str,time_str)
         with open(path_booked+"/booked"+str(plane_no)+".csv", 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerows(booked)
@@ -79,13 +77,15 @@ def data_plane(x):
         with open(path_booking+"/booking"+str(plane_no)+".csv", 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerows(booking)
+        data.append([destination, plane_no, date, week, time_str, line_no, price, discount, max_seat, remain_seat,path_booked+"/booked"+str(plane_no)+".csv",path_booking+"/booking"+str(plane_no)+".csv"])
+        
     return data
 
 
 
 os.mkdir("../References")
 art.tprint("Data   Creation",font="random")
-plane =data_plane(10)
+plane =data_plane(10000)
 art.tprint("Data   Creation   Completed")
 #写入csv文件
 with open('../References/plane.csv', 'w', newline='') as f:

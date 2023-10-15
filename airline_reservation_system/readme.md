@@ -7,10 +7,22 @@
 
 ### 编译运行
 #### ***注意 ： 本技术文档只提供Ubuntu22.04编译方法。***
-### 编译：    
-    cd airline_reservation_system/build
+
+### 
+
+#### 依赖安装：
+    pip install -r requirments.txt
+#### 数据处理：
+    cd airline_reservation_system/
+    rm -r ./References/
+    cd ./scripts
+    python3 text
+#### 编译运行：    
+    cd ../build
     cmake ..
     make
+    ./main
+
 
 ### 文件结构
 - [airline reservation system（航空订票系统）](../airline%20reservation%20system)

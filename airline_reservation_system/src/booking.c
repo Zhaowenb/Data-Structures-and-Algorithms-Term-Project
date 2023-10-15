@@ -59,6 +59,11 @@ Booking入队
 void EnBookingList(BookingList *L,Booking *e)
 {
     Booking *p = (Booking *)malloc(sizeof(Booking));
+    if(p == NULL)
+    {
+        printf("内存分配失败\n");
+        return;
+    }
     p->next = NULL;
     strcpy(p->name,e->name);
     p->certificate_no = e->certificate_no;
@@ -69,8 +74,27 @@ void EnBookingList(BookingList *L,Booking *e)
     p->time[0] = e->time[0];
     p->time[1] = e->time[1];
     p->amount = e->amount;
-    L->booking_tail->next = p;
-    L->booking_tail = p;
+    if(L->booking_head == NULL||L->booking_tail == NULL)
+    {
+        L->booking_head = p;
+        L->booking_tail = p;
+        // printf("入队成功1\n");
+        return;
+    }
+    else if(L->booking_head == L->booking_tail)
+    {
+        L->booking_head->next = p;
+        L->booking_tail = p;
+        // printf("入队成功2\n");
+        return;
+    }
+    else if (L->booking_head != L->booking_tail && L->booking_tail != NULL)
+    {
+        L->booking_tail->next = p;
+        L->booking_tail = p;
+        // printf("入队成功3\n");
+        return;
+    }
 }
 
 /*
@@ -131,8 +155,8 @@ int LengthBookingList(BookingList *L)
 void PrintBooking(Booking *e)
 {
     printf("姓名：%s\t",e->name);
-    printf("身份证号：%ld\t",e->certificate_no);
-    printf("航班号：%d\t",e->line_no);
+    printf("身份证号：%lu\t",e->certificate_no);
+    printf("航班号：%llu\t",e->line_no);
     printf("出发日期：%d-%d-%d\t",e->date[0],e->date[1],e->date[2]);
     printf("出发时间：%d:%d\t",e->time[0],e->time[1]);
     printf("预定票数：%d\n",e->amount);
@@ -221,11 +245,11 @@ void InputBookingList(BookingList *L,char *filename)
         printf("文件打开失败\n");
         return;
     }
-    Booking *e;
-    char str[100];
-    while(fgets(str,100,fp) != NULL)
+    Booking *e = (Booking *)malloc(sizeof(Booking));
+    while(!feof(fp))
     {
-        sscanf(str,"%s %ld %d %d-%d-%d %d:%d %d",e->name,&e->certificate_no,&e->line_no,&e->date[0],&e->date[1],&e->date[2],&e->time[0],&e->time[1],&e->amount);
+        
+        fscanf(fp,"%[^,],%lu,%llu,%d-%d-%d,%d:%d,%d\n",e->name,&e->certificate_no,&e->line_no,&e->date[0],&e->date[1],&e->date[2],&e->time[0],&e->time[1],&e->amount);
         EnBookingList(L,e);
     }
     fclose(fp);
@@ -249,7 +273,7 @@ void DataupBookingList(BookingList *L,char *filename)
     Booking *p = L->booking_head->next;
     while(p != NULL)
     {
-        fprintf(fp,"%s %ld %d %d-%d-%d %d:%d %d\n",p->name,p->certificate_no,p->line_no,p->date[0],p->date[1],p->date[2],p->time[0],p->time[1],p->amount);
+        fprintf(fp,"%s %lu %llu %d-%d-%d %d:%d %d\n",p->name,p->certificate_no,p->line_no,p->date[0],p->date[1],p->date[2],p->time[0],p->time[1],p->amount);
         p = p->next;
     }
     fclose(fp);
@@ -260,35 +284,37 @@ void DataupBookingList(BookingList *L,char *filename)
 // {
 //     BookingList L;
 //     InitBookingList(&L);
-//     Booking e;
-//     e.certificate_no = 123456789;
-//     e.line_no = 123;
-//     e.date[0] = 2020;
-//     e.date[1] = 12;
-//     e.date[2] = 12;
-//     e.time[0] = 12;
-//     e.time[1] = 12;
-//     e.amount = 1;
-//     strcpy(e.name,"zhangsan");
-//     EnBookingList(&L,&e);
-//     e.certificate_no = 987654321;
-//     e.line_no = 321;
-//     e.date[0] = 2020;
-//     e.date[1] = 12;
-//     e.date[2] = 12;
-//     e.time[0] = 12;
-//     e.time[1] = 12;
-//     e.amount = 1;
-//     strcpy(e.name,"lisi");
-//     EnBookingList(&L,&e);
+  
+    // Booking e;
+    // e.certificate_no = 123456789;
+    // e.line_no = 123;
+    // e.date[0] = 2020;
+    // e.date[1] = 12;
+    // e.date[2] = 12;
+    // e.time[0] = 12;
+    // e.time[1] = 12;
+    // e.amount = 1;
+    // strcpy(e.name,"zhangsan");
+    // EnBookingList(&L,&e);
+    // e.certificate_no = 987654321;
+    // e.line_no = 321;
+    // e.date[0] = 2020;
+    // e.date[1] = 12;
+    // e.date[2] = 12;
+    // e.time[0] = 12;
+    // e.time[1] = 12;
+    // e.amount = 1;
+    // strcpy(e.name,"lisi");
+    // EnBookingList(&L,&e);
+    // TraverseBookingList(&L,PrintBooking);
+    // printf("length:%d\n",LengthBookingList(&L));
+    // DeBookingList(&L,&e);
+    // TraverseBookingList(&L,PrintBooking);
+    // printf("length:%d\n",LengthBookingList(&L));
+    // DestroyBookingList(&L);
+    // printf("length:%d\n",LengthBookingList(&L));
+//   InputBookingList(&L,"../References/Booking/booking1.csv");
 //     TraverseBookingList(&L,PrintBooking);
-//     printf("length:%d\n",LengthBookingList(&L));
-//     DeBookingList(&L,&e);
-//     TraverseBookingList(&L,PrintBooking);
-//     printf("length:%d\n",LengthBookingList(&L));
-//     DestroyBookingList(&L);
-//     printf("length:%d\n",LengthBookingList(&L));
-
 
 //     return 0;
 // }

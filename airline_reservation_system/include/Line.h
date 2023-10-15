@@ -10,7 +10,7 @@ typedef struct Linelist
     //destination:目的地
     char destination[50];
     //line_no:航班号
-    unsigned long line_no;
+    unsigned long long line_no;
     //plane_no:飞机号
     int plane_no;
     //date:日期

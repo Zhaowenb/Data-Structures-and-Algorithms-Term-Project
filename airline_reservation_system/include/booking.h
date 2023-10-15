@@ -24,11 +24,11 @@ typedef struct Booking
 {
     //name, certificate_no, line_no, date, time, amount分别指向用户姓名，身份证号，航班号，出发日期，出发时间，预定票数
     //name指向用户姓名
-    char name[20];
+    char name[100];
     //certificate_no指向用户身份证号
-    long certificate_no;
+    unsigned long certificate_no;
     //line_no指向航班号
-    int line_no;
+    unsigned long long line_no;
     //date指向出发日期
     int date[3];
     //time指向出发时间

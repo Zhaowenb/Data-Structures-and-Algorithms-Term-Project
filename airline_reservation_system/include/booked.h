@@ -24,11 +24,11 @@ typedef struct Booked
 {
     //订单号，姓名，身份证号，票数，座位号
     //订单号
-    long orderform_no;
+    unsigned long long orderform_no;
     //姓名
     char name[100];
     //身份证号
-    long certificate_no;
+    unsigned long certificate_no;
     //购买票数
     int amount;
     //座位号
@@ -84,7 +84,7 @@ int LengthBookedList(Booked *L);
 参数：Booked *L, double orderform_no
 返回值：元素所在位置，若不存在则返回0
 */
-int GetBooked(Booked *L, long orderform_no);
+int GetBooked(Booked *L, unsigned long long orderform_no);
 
 /*
 在booked链表中按位查找

@@ -42,7 +42,7 @@ void PrintBookedList(Booked *L)
     Booked *p = L->next;
     while(p != NULL)
     {
-        printf("订单号：%lu\t姓名：%s\t身份证号：%lu\t购买票数：%d\t座位号：%d\n",p->orderform_no,p->name,p->certificate_no,p->amount,p->seat_no);
+        printf("订单号：%llu\t姓名：%s\t身份证号：%lu\t购买票数：%d\t座位号：%d\n",p->orderform_no,p->name,p->certificate_no,p->amount,p->seat_no);
         p = p->next;
     }
 }
@@ -55,7 +55,7 @@ void PrintBookedList(Booked *L)
 */
 void PrintBooked(Booked *b)
 {
-    printf("订单号：%lu\t姓名：%s\t身份证号：%lu\t购买票数：%d\t座位号：%d\n",b->orderform_no,b->name,b->certificate_no,b->amount,b->seat_no);
+    printf("订单号：%llu\t姓名：%s\t身份证号：%lu\t购买票数：%d\t座位号：%d\n",b->orderform_no,b->name,b->certificate_no,b->amount,b->seat_no);
 }
 
 /* 
@@ -82,7 +82,7 @@ int LengthBookedList(Booked *L)
 参数：Booked *L, double orderform_no
 返回值：元素所在位置，若不存在则返回0
 */
-int GetBooked(Booked *L, long orderform_no)
+int GetBooked(Booked *L, unsigned long long orderform_no)
 {
     Booked *p = L->next;
     int i = 1;
@@ -187,7 +187,7 @@ void CreateBookedList(Booked *B, char *filename)
     while(!feof(fp))
     {
         Booked *b = (Booked *)malloc(sizeof(Booked));
-        fscanf(fp,"%lu,%[^,],%lu,%d,%d\n",&b->orderform_no,b->name,&b->certificate_no,&b->amount,&b->seat_no);
+        fscanf(fp,"%llu,%[^,],%lu,%d,%d\n",&b->orderform_no,b->name,&b->certificate_no,&b->amount,&b->seat_no);
         b->next = NULL;
         p->next = b;
         p = b;
@@ -212,7 +212,7 @@ void UpdateBookedList(Booked *L, char *filename)
     Booked *p = L->next;
     while(p != NULL)
     {
-        fprintf(fp,"%lu,%s,%lu,%d,%d\n",p->orderform_no,p->name,p->certificate_no,p->amount,p->seat_no);
+        fprintf(fp,"%llu,%s,%lu,%d,%d\n",p->orderform_no,p->name,p->certificate_no,p->amount,p->seat_no);
         p = p->next;
     }
     fclose(fp);
@@ -268,10 +268,16 @@ void DestroyBookedList(Booked *L)
     }
 }
 
-// // 测试函数
+// 测试函数
 // int main()
 // {
 //     Booked *L = InitBookedList();
+//     CreateBookedList(L,"../References/Booked/booked1.csv");
+//     PrintBookedList(L);
+
+
+
+
 //     printf("是否为空：%d\n",isEmptyBookedList(L));
 //     printf("长度：%d\n",LengthBookedList(L));
 //     Booked b1 = {1,"张三",123456789,1,1,NULL};
@@ -290,6 +296,9 @@ void DestroyBookedList(Booked *L)
 //     PrintBooked(getBookedByIndex(L,2));
 //     printf("第3个元素：%d\n",GetBooked(L,3));
 //     printf("第4个元素：%d\n",GetBooked(L,4));
+//     UpdateBookedList(L,"../References/Booked/booked1.csv");
+//     DeleteBookedList(L,1);
+
 //     return 0;
 // }
 
