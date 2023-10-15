@@ -23,8 +23,10 @@
 Linelist *InitLineList()
 {
     Linelist *head = (Linelist *)malloc(sizeof(Linelist));
+    head->booked=(Booked *)malloc(sizeof(Booked));
+    head->booking=(BookingList *)malloc(sizeof(BookingList));
     head->booked = InitBookedList();
-    InitBookingList(head->booking);
+    head->booking=InitBookingList(head->booking);
     head->next = NULL;
     return head;
 }
@@ -58,7 +60,7 @@ void PrintLineList(Linelist *L)
     Linelist *p = L->next;
     while(p != NULL)
     {
-        printf("航班号：%lu\t目的地：%s\t日期：%d-%d-%d\t星期：%d\t时间：%d:%d\t价格：%f\t折扣：%f\t座位数：%d\t剩余座位数：%d\n",p->line_no,p->destination,p->date[0],p->date[1],p->date[2],p->week,p->time[0],p->time[1],p->price,p->discount,p->max_seat,p->remain_seat);
+        printf("航班号：%llu\t目的地：%s\t日期：%d-%d-%d\t星期：%d\t时间：%d:%d\t价格：%f\t折扣：%f\t座位数：%d\t剩余座位数：%d\n",p->line_no,p->destination,p->date[0],p->date[1],p->date[2],p->week,p->time[0],p->time[1],p->price,p->discount,p->max_seat,p->remain_seat);
         p = p->next;
     }
 }
@@ -71,7 +73,7 @@ void PrintLineList(Linelist *L)
 */
 void PrintLine(Linelist *p)
 {
-    printf("航班号：%lu\t目的地：%s\t日期：%d-%d-%d\t星期：%d\t时间：%d:%d\t价格：%f\t折扣：%f\t座位数：%d\t剩余座位数：%d\n",p->line_no,p->destination,p->date[0],p->date[1],p->date[2],p->week,p->time[0],p->time[1],p->price,p->discount,p->max_seat,p->remain_seat);
+    printf("航班号：%llu\t目的地：%s\t日期：%d-%d-%d\t星期：%d\t时间：%d:%d\t价格：%f\t折扣：%f\t座位数：%d\t剩余座位数：%d\n",p->line_no,p->destination,p->date[0],p->date[1],p->date[2],p->week,p->time[0],p->time[1],p->price,p->discount,p->max_seat,p->remain_seat);
 }
 
 /*
@@ -236,18 +238,25 @@ void ReadLineList(Linelist *L,char *filename)
     while(!feof(fp))
     {
         q = (Linelist *)malloc(sizeof(Linelist));
-        char *BookedFileName = (char *)malloc(sizeof(char)*100);
-        char *BookingFileName = (char *)malloc(sizeof(char)*100);
-        fscanf(fp,"%lu %s %d %d %d %d %d %d %f %f %d %d %s %s\n",&(q->line_no),q->destination,&(q->date[0]),&(q->date[1]),&(q->date[2]),&(q->week),&(q->time[0]),&(q->time[1]),&(q->price),&(q->discount),&(q->max_seat),&(q->remain_seat),BookedFileName,BookingFileName);  
+        char BookedFileName[100];
+        char BookingFileName[100];
+        fscanf(fp,"%[^,],%d,%d-%d-%d,%d,%d:%d,%llu,%f,%f,%d,%d,%[^,],%s\n",q->destination,&q->plane_no,&q->date[0],&q->date[1],&q->date[2],&q->week,&q->time[0],&q->time[1],&q->line_no,&q->price,&q->discount,&q->max_seat,&q->remain_seat,BookedFileName,BookingFileName);
         q->next = NULL;
         p->next = q;
         p = q;
         q->booked = InitBookedList();
-        InitBookingList(q->booking);
+        q->booking = InitBookingList(q->booking);
+        
         CreateBookedList(q->booked,BookedFileName);
+        printf("%s\n",BookedFileName);
         InputBookingList(q->booking,BookingFileName);
-        free(BookedFileName);
-        free(BookingFileName);
+
+
+        // printf("%s\n",BookedFileName);
+        printf("%s\n",BookingFileName);
+        
+
+        printf("读取成功！\n");
     }
     fclose(fp);
 }
@@ -269,23 +278,23 @@ void WriteLineList(Linelist *L,char *filename)
     Linelist *p = L->next;
     while(p != NULL)
     {
-        fprintf(fp,"%lu %s %d %d %d %d %d %d %f %f %d %d\n",p->line_no,p->destination,p->date[0],p->date[1],p->date[2],p->week,p->time[0],p->time[1],p->price,p->discount,p->max_seat,p->remain_seat);
+        fprintf(fp,"%s,%d,%d-%d-%d,%d,%d:%d,%llu,%f,%f,%d,%d,%s%d%s,%s%d%s\n",p->destination,p->plane_no,p->date[0],p->date[1],p->date[2],p->week,p->time[0],p->time[1],p->line_no,p->price,p->discount,p->max_seat,p->remain_seat,"../References/Booked/booked",p->plane_no,".csv","../References/Booking/booking",p->plane_no,".csv");
         p = p->next;
     }
     fclose(fp);
 }
 
 //测试代码
-int main()
-{
-    Linelist *L = InitLineList();
-    printf("航班链表是否为空：%d\n",isEmptyLineList(L));
-    printf("航班链表长度：%d\n",LengthLineList(L));
-
+// int main()
+// {
+//     Linelist *L = InitLineList();
+//     ReadLineList(L,"../References/plane.csv");
+//     PrintLineList(L);
+//     // WriteLineList(L,"../References/plane1.csv");
     
-    return 0;
+//     return 0;
 
-}
+// }
 
 
 

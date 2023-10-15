@@ -50,9 +50,9 @@ typedef struct BookingList
     *初始化booking队列
     *函数名：InitBookingList
     *参数：BookingList *L
-    *返回值：无
+    *返回值：BookingList *L
 */
-void InitBookingList(BookingList *L);
+BookingList* InitBookingList(BookingList *L);
 
 /*
 判断Booking队列是否为空

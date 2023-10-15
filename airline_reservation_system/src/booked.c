@@ -213,7 +213,7 @@ void UpdateBookedList(Booked *L, char *filename)
     while(p != NULL)
     {
         fprintf(fp,"%llu,%s,%lu,%d,%d\n",p->orderform_no,p->name,p->certificate_no,p->amount,p->seat_no);
-        p = p->next;
+        p = p->next; 
     }
     fclose(fp);
 }

@@ -57,10 +57,10 @@ RM = /home/codespace/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/workspaces/Data-Structures-and-Algorithms-Term-Project/airline reservation system"
+CMAKE_SOURCE_DIR = /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/workspaces/Data-Structures-and-Algorithms-Term-Project/airline reservation system/build"
+CMAKE_BINARY_DIR = /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/workspaces/Data-Structures-and-Algorithms-Term-Project/airline reservation system/build/CMakeFiles" "/workspaces/Data-Structures-and-Algorithms-Term-Project/airline reservation system/build//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/build/CMakeFiles /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/workspaces/Data-Structures-and-Algorithms-Term-Project/airline reservation system/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

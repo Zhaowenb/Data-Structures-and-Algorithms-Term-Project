@@ -1,7 +1,7 @@
 CMakeFiles/main.dir/src/booking.c.o: \
- /workspaces/Data-Structures-and-Algorithms-Term-Project/airline\ reservation\ system/src/booking.c \
+ /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/booking.c \
  /usr/include/stdc-predef.h \
- /workspaces/Data-Structures-and-Algorithms-Term-Project/airline\ reservation\ system/src/../include/booking.h \
+ /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/../include/booking.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \

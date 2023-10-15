@@ -3,16 +3,30 @@
 /*
 初始化booking队列
 函数名：InitBookingList
-参数：BookingList *L
-返回值：无
+参数： BookingList *L
+返回值：BookingList *L
 */
-void InitBookingList(BookingList *L)
+BookingList* InitBookingList(BookingList *L)
 {
+        L = (BookingList *)malloc(sizeof(BookingList));
         //头结点的指针域置空
         Booking *head = (Booking *)malloc(sizeof(Booking));   
+        //检查内存分配是否成功
+        if (head == NULL) {
+            printf("Memory allocation failed!\n");
+            return NULL;
+        }
+        //给头节点的数据域赋一个初始值
+        // head->id = -1;
         head->next = NULL;
+        if (L == NULL) {
+            printf("Invalid parameter!\n");
+            return NULL;
+        }
         L->booking_head = head;
         L->booking_tail = head;
+        //返回初始化后的列表
+        return L;
 }
 
 /*
@@ -273,7 +287,7 @@ void DataupBookingList(BookingList *L,char *filename)
     Booking *p = L->booking_head->next;
     while(p != NULL)
     {
-        fprintf(fp,"%s %lu %llu %d-%d-%d %d:%d %d\n",p->name,p->certificate_no,p->line_no,p->date[0],p->date[1],p->date[2],p->time[0],p->time[1],p->amount);
+        fprintf(fp,"%s,%lu,%llu,%d-%d-%d,%d:%d,%d\n",p->name,p->certificate_no,p->line_no,p->date[0],p->date[1],p->date[2],p->time[0],p->time[1],p->amount);
         p = p->next;
     }
     fclose(fp);

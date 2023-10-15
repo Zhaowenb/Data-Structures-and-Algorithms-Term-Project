@@ -6,5 +6,5 @@ C_DEFINES =
 
 C_INCLUDES = 
 
-C_FLAGS = -g -Wunused
+C_FLAGS = -g -g -Wunused
 

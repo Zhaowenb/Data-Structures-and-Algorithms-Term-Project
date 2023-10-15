@@ -59,7 +59,7 @@ def data_plane(x):
         date = fake.date_between(start_date=start_date, end_date=end_date) 
         datestr = str(date).split('-')
         date_str = datestr[0]+"-"+datestr[1]+"-"+datestr[2]
-        week = date.weekday()
+        week = fake.random_int(min=1, max=7)
         time = fake.time()
         timestr = str(time).split(':')
         time_str = timestr[0]+":"+timestr[1]
@@ -85,7 +85,7 @@ def data_plane(x):
 
 os.mkdir("../References")
 art.tprint("Data   Creation",font="random")
-plane =data_plane(10000)
+plane =data_plane(10)
 art.tprint("Data   Creation   Completed")
 #写入csv文件
 with open('../References/plane.csv', 'w', newline='') as f:

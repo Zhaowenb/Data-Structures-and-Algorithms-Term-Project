@@ -3,5 +3,5 @@
         "booking.h": "c",
         "booked.h": "c"
     },
-    "cmake.sourceDirectory": "/workspaces/Data-Structures-and-Algorithms-Term-Project/airline reservation system"
+    "cmake.sourceDirectory": "/workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system"
 }

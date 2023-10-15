@@ -1,8 +1,8 @@
 CMakeFiles/main.dir/src/Line.c.o: \
- /workspaces/Data-Structures-and-Algorithms-Term-Project/airline\ reservation\ system/src/Line.c \
+ /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/Line.c \
  /usr/include/stdc-predef.h \
- /workspaces/Data-Structures-and-Algorithms-Term-Project/airline\ reservation\ system/src/../include/Line.h \
- /workspaces/Data-Structures-and-Algorithms-Term-Project/airline\ reservation\ system/src/../include/booking.h \
+ /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/../include/Line.h \
+ /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/../include/booking.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -53,4 +53,4 @@ CMakeFiles/main.dir/src/Line.c.o: \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
  /usr/include/strings.h \
- /workspaces/Data-Structures-and-Algorithms-Term-Project/airline\ reservation\ system/src/../include/booked.h
+ /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/../include/booked.h
