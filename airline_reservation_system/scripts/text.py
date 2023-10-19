@@ -63,7 +63,13 @@ def data_plane(x):
         time = fake.time()
         timestr = str(time).split(':')
         time_str = timestr[0]+":"+timestr[1]
-        line_no = datestr[0][2]+datestr[0][3]+datestr[1]+datestr[2]+timestr[0]+timestr[1]+str(plane_no) 
+        if plane_no<10:
+            plane_no_str = "00"+str(plane_no)
+        elif plane_no<100 and plane_no>9:
+            plane_no_str = "0"+str(plane_no)
+        else:
+            plane_no_str = str(plane_no)
+        line_no = datestr[0][2]+datestr[0][3]+datestr[1]+datestr[2]+timestr[0]+timestr[1]+plane_no_str
         price = fake.pyfloat(left_digits=3, right_digits=2, positive=True)
         discount = fake.pyfloat(left_digits=1, right_digits=2, positive=True)
         max_seat = fake.random_int(min=min_seat, max=Max_seat)

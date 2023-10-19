@@ -98,7 +98,7 @@ void SortLineList(Linelist *L);
     参数：Linelist *L,char *destination,int *date,int *time
     返回值：Linelist *p
 */
-Linelist *SearchLineList(Linelist *L,char *destination,int *date,int *time);
+Linelist *SearchLineList(Linelist *L,char *destination ,char *date,char *time);
 
 /*
     删除航班

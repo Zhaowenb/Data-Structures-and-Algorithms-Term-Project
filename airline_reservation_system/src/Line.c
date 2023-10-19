@@ -156,14 +156,19 @@ void SortLineList(Linelist *L)
     参数：Linelist *L,char *destination,int *date,int *time
     返回值：Linelist *p
 */
-Linelist *SearchLineList(Linelist *L,char *destination,int *date,int *time)
+Linelist *SearchLineList(Linelist *L,char *destination,char *date,char *time)
 {
     Linelist *p = L->next;
     while(p != NULL)
-    {
+    {  
         if(strcmp(p->destination,destination) == 0 )
         {
-            if(p->line_no/10>= ( date[0]*100000000+date[1]*1000000+date[2]*10000+time[0]*100+time[1]))
+            char data[100];
+            strcpy(data,date);
+            strcat(data,time);
+            
+            unsigned long long date_int = atoi(data);
+            if(p->line_no >= date_int)
             { 
                 return p;
             }
@@ -248,12 +253,12 @@ void ReadLineList(Linelist *L,char *filename)
         q->booking = InitBookingList(q->booking);
         
         CreateBookedList(q->booked,BookedFileName);
-        printf("%s\n",BookedFileName);
+        // printf("%s\n",BookedFileName);
         InputBookingList(q->booking,BookingFileName);
 
 
         // printf("%s\n",BookedFileName);
-        printf("%s\n",BookingFileName);
+        // printf("%s\n",BookingFileName);
         
 
         printf("读取成功！\n");
@@ -290,6 +295,19 @@ void WriteLineList(Linelist *L,char *filename)
 //     Linelist *L = InitLineList();
 //     ReadLineList(L,"../References/plane.csv");
 //     PrintLineList(L);
+//     printf("航班数量：%d\n",LengthLineList(L));
+//     SortLineList(L);
+//     PrintLineList(L);
+    
+//    while(L->next != NULL)
+//     {
+//         // DeleteLineList(L,L->next->line_no);
+//         PrintBookedList(L->next->booked);
+//         // PrintBookingList(L->next->booking);
+//         L = L->next;
+
+
+//     }
 //     // WriteLineList(L,"../References/plane1.csv");
     
 //     return 0;

@@ -109,14 +109,14 @@ int GetBooked(Booked *L, unsigned long long orderform_no)
 */
 Booked *getBookedByIndex(Booked *L, int index)
 {
-    if(index < 0 || index > LengthBookedList(L))
+    if(index < 1 || index > LengthBookedList(L))
     {
         printf("查找位置有误！\n");
         return NULL;
     }
-    Booked *p = L->next;
+    Booked *p = L;
     int i = 1;
-    while(p != NULL && i < index)
+    while(p != NULL && i <= index)
     {
         p = p->next;
         i++;
@@ -134,7 +134,7 @@ Booked *getBookedByIndex(Booked *L, int index)
 /*
 在booked链表中插入元素
 函数名：InsertBookedList
-参数：Bo0ked *L, int index, Booked *b
+参数：Booked *L, int index, Booked *b
 返回值：成功返回1，失败返回0
 */
 int InsertBookedList(Booked *L, int index, Booked *b)

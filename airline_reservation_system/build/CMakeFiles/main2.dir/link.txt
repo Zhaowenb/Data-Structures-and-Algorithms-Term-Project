@@ -1,0 +1,1 @@
+/usr/bin/cc -g -rdynamic CMakeFiles/main2.dir/src/main.c.o CMakeFiles/main2.dir/src/Line.c.o CMakeFiles/main2.dir/src/booking.c.o CMakeFiles/main2.dir/src/booked.c.o -o main2 
