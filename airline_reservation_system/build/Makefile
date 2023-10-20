@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main2
+# Target rules for targets named main
 
 # Build rule for target.
-main2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main2
-.PHONY : main2
+main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-main2/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/build
-.PHONY : main2/fast
+main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
 
 src/Line.o: src/Line.c.o
 .PHONY : src/Line.o
 
 # target to build an object file
 src/Line.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/Line.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Line.c.o
 .PHONY : src/Line.c.o
 
 src/Line.i: src/Line.c.i
@@ -142,7 +142,7 @@ src/Line.i: src/Line.c.i
 
 # target to preprocess a source file
 src/Line.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/Line.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Line.c.i
 .PHONY : src/Line.c.i
 
 src/Line.s: src/Line.c.s
@@ -150,7 +150,7 @@ src/Line.s: src/Line.c.s
 
 # target to generate assembly for a file
 src/Line.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/Line.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Line.c.s
 .PHONY : src/Line.c.s
 
 src/booked.o: src/booked.c.o
@@ -158,7 +158,7 @@ src/booked.o: src/booked.c.o
 
 # target to build an object file
 src/booked.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/booked.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/booked.c.o
 .PHONY : src/booked.c.o
 
 src/booked.i: src/booked.c.i
@@ -166,7 +166,7 @@ src/booked.i: src/booked.c.i
 
 # target to preprocess a source file
 src/booked.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/booked.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/booked.c.i
 .PHONY : src/booked.c.i
 
 src/booked.s: src/booked.c.s
@@ -174,7 +174,7 @@ src/booked.s: src/booked.c.s
 
 # target to generate assembly for a file
 src/booked.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/booked.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/booked.c.s
 .PHONY : src/booked.c.s
 
 src/booking.o: src/booking.c.o
@@ -182,7 +182,7 @@ src/booking.o: src/booking.c.o
 
 # target to build an object file
 src/booking.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/booking.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/booking.c.o
 .PHONY : src/booking.c.o
 
 src/booking.i: src/booking.c.i
@@ -190,7 +190,7 @@ src/booking.i: src/booking.c.i
 
 # target to preprocess a source file
 src/booking.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/booking.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/booking.c.i
 .PHONY : src/booking.c.i
 
 src/booking.s: src/booking.c.s
@@ -198,32 +198,8 @@ src/booking.s: src/booking.c.s
 
 # target to generate assembly for a file
 src/booking.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/booking.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/booking.c.s
 .PHONY : src/booking.c.s
-
-src/main.o: src/main.c.o
-.PHONY : src/main.o
-
-# target to build an object file
-src/main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/main.c.o
-.PHONY : src/main.c.o
-
-src/main.i: src/main.c.i
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/main.c.i
-.PHONY : src/main.c.i
-
-src/main.s: src/main.c.s
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/main.c.s
-.PHONY : src/main.c.s
 
 # Help Target
 help:
@@ -233,7 +209,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... main2"
+	@echo "... main"
 	@echo "... src/Line.o"
 	@echo "... src/Line.i"
 	@echo "... src/Line.s"
@@ -243,9 +219,6 @@ help:
 	@echo "... src/booking.o"
 	@echo "... src/booking.i"
 	@echo "... src/booking.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
 .PHONY : help
 
 
