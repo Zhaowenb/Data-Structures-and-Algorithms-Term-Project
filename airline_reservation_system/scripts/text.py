@@ -91,7 +91,7 @@ def data_plane(x):
 
 os.mkdir("../References")
 art.tprint("Data   Creation",font="random")
-plane =data_plane(10)
+plane =data_plane(100)
 art.tprint("Data   Creation   Completed")
 #写入csv文件
 with open('../References/plane.csv', 'w', newline='') as f:

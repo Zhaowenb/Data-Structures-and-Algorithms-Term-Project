@@ -8,6 +8,6 @@ SET (CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 # include_directories(CURSES_INCLUDE_DIR)
 
 add_compile_options(-g -Wunused)
-#add_executable(main ./src/Line.c ./src/booking.c ./src/booked.c)
-add_executable(main2 ./src/main.c ./src/Line.c ./src/booking.c ./src/booked.c )
+add_executable(main ./src/Line.c ./src/booking.c ./src/booked.c)
+# add_executable(main2 ./src/main.c ./src/Line.c ./src/booking.c ./src/booked.c )
 # target_link_libraries(main2 ${CURSES_LIBRARIES})

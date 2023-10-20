@@ -16,12 +16,12 @@
     cd airline_reservation_system/
     rm -r ./References/
     cd ./scripts
-    python3 text
+    python3 text.py
 #### 编译运行：    
     cd ../build
     cmake ..
     make
-    ./main
+    ./main2
 
 
 ### 文件结构

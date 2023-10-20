@@ -149,6 +149,43 @@ void SortLineList(Linelist *L)
         p = p->next;
     }
 }
+// void SortLineList(Linelist *L)
+// {
+//     if(L == NULL || L->next == NULL) // 如果链表为空或只有一个节点，直接返回
+//         return;
+//     Linelist *p = L->next;
+//     Linelist *q = NULL;
+//     Linelist *min = NULL;
+//     Linelist *temp = NULL;
+//     while(p != NULL)
+//     {
+//         min = p;
+//         q = p->next;
+//         while(q != NULL)
+//         {
+//             if(q->line_no < min->line_no)
+//             {
+//                 min = q;
+//             }
+//             q = q->next;
+//         }
+//         if(min != p)
+//         {
+//             temp = min->next; // 保存min后面的节点
+//             q = p; // 找到p前面的节点
+//             if(q->next == NULL) // 如果q已经是最后一个节点，直接跳出循环
+//                 break;
+
+//             while(q->next != p)
+//                 q = q->next;
+//             q->next = min; // 将min插入到p前面
+//             min->next = p; // 将p接在min后面
+//             p->next = temp; // 将min后面的节点接在p后面
+//         }
+//         p = p->next; // 移动到下一个要排序的节点
+//     }
+// }
+
 
 /*
     查询航班
@@ -289,30 +326,265 @@ void WriteLineList(Linelist *L,char *filename)
     fclose(fp);
 }
 
-//测试代码
-// int main()
-// {
-//     Linelist *L = InitLineList();
-//     ReadLineList(L,"../References/plane.csv");
-//     PrintLineList(L);
-//     printf("航班数量：%d\n",LengthLineList(L));
-//     SortLineList(L);
-//     PrintLineList(L);
+/*
+    添加航班
+    函数名：AddLineList
+    参数：Linelist *L
+    返回值：Linelist *L
+*/
+Linelist *AddLineList(Linelist *L)
+{
+    Linelist *p = (Linelist *)malloc(sizeof(Linelist));
+    printf("请输入目的地：");
+    p->destination[0] = '\0'; //清空字符串
+    fgets(p->destination, 100, stdin); 
+    p->destination[strlen(p->destination) - 1] = '\0'; //去掉回车
+    p->plane_no=LengthLineList(L)+1;
+    printf("请输入日期(输入方式：年-月-日，例如2023.04.26，输入2023-04-26)：");
+    char date1[5];
+    char date2[3];
+    char date3[3];
+    char date0[9];
+    scanf("%s",date0);
+    date1[0]=date0[0];
+    date1[1]=date0[1];
+    date1[2]=date0[2];
+    date1[3]=date0[3];
+    date1[4]='\0';
+    date2[0]=date0[4];
+    date2[1]=date0[5];
+    date2[2]='\0';
+    date3[0]=date0[6];
+    date3[1]=date0[7];
+    date3[2]='\0';
+    p->date[0]=atoi(date1);
+    p->date[1]=atoi(date2);
+    p->date[2]=atoi(date3);
+    printf("%s\n",date1);
+    printf("%s\n",date2);
+    printf("%s\n",date3);
+    printf("%d\n",p->date[0]);
+    printf("%d\n",p->date[1]);
+    printf("请输入星期：");
+    scanf("%d",&p->week);
+    printf("请输入时间(输入方式：时：分，例如12:34，输入12：34)：");
+    char time1[3];
+    char time2[3];
+    char time0[5];
+    scanf("%s",time0);
+    time1[0]=time0[0];
+    time1[1]=time0[1];
+    time1[2]='\0';
+    time2[0]=time0[2];
+    time2[1]=time0[3];
+    time2[2]='\0';
+    printf("%s\n",time1);
+    printf("%s\n",time2);
     
-//    while(L->next != NULL)
-//     {
-//         // DeleteLineList(L,L->next->line_no);
-//         PrintBookedList(L->next->booked);
-//         // PrintBookingList(L->next->booking);
-//         L = L->next;
+    p->time[0]=atoi(time1);
+    p->time[1]=atoi(time2);
+    printf("%s\n",time1);
+    printf("%s\n",time2);
+    printf("请输入价格：");
+    scanf("%f",&p->price);
+    printf("请输入折扣：");
+    scanf("%f",&p->discount);
+    printf("请输入座位数：");
+    scanf("%d",&p->max_seat);
+    p->remain_seat=p->max_seat;
+    char line_no_str[100]="\0" ;
+    line_no_str[0]=date1[2];
+    line_no_str[1]=date1[3];
+    strcat(line_no_str,date2);
+    printf("%s\n",line_no_str);
+    strcat(line_no_str,date3);
+    printf("%s\n",line_no_str);
+    strcat(line_no_str,time1);
+    strcat(line_no_str,time2);
+    p->line_no=atoll(line_no_str)*1000+p->plane_no;
+    char plane_path[100]="../References/Booked/booked";
+    char plane_no_str[10]="\0" ;
+    char plane_path2[100]="../References/Booking/booking";
+    sprintf(plane_no_str,"%d",p->plane_no);
+    strcat(plane_path,plane_no_str);
+    strcat(plane_path2,plane_no_str);
+    strcat(plane_path2,".csv");
+    strcat(plane_path,".csv");
+    p->booked=InitBookedList();
+    p->booking=InitBookingList(p->booking);
+    p->next=NULL;
+    InsertLineList(L,p);
+    WriteLineList(L,"../References/plane.csv");
+    UpdateBookedList(p->booked,plane_path);
+    DataupBookingList(p->booking,plane_path2);
+    printf("添加成功！\n");
+    return L;
+}
 
 
-//     }
-//     // WriteLineList(L,"../References/plane1.csv");
-    
-//     return 0;
 
-// }
+/*
+    修改航班
+    函数名：ModifyLineList
+    参数：Linelist *L
+    返回值：无
+*/
+void ModifyLineList(Linelist *L)
+{
+    printf("请输入要修改的航班号：");
+    unsigned long long line_no;
+    scanf("%llu",&line_no);
+    Linelist *p = L->next;
+    while(p != NULL)
+    {
+        if(p->line_no == line_no)
+        {
+            printf("成功找到该航班！\n");
+            PrintLine(p);
+            printf("请输入目的地：");
+            p->destination[0] = '\0'; //清空字符串
+            getchar(); //清空缓冲区
+            fgets(p->destination, 100, stdin); 
+            p->destination[strlen(p->destination) - 1] = '\0'; //去掉回车
+            printf("请输入日期(输入方式：年-月-日，例如2023.04.26，输入20230426)：");
+            char date1[5];
+            char date2[3];
+            char date3[3];
+            char date0[9];
+            scanf("%s",date0);
+            date1[0]=date0[0];
+            date1[1]=date0[1];
+            date1[2]=date0[2];
+            date1[3]=date0[3];
+            date1[4]='\0';
+            date2[0]=date0[4];
+            date2[1]=date0[5];
+            date2[2]='\0';
+            date3[0]=date0[6];
+            date3[1]=date0[7];
+            date3[2]='\0';
+            p->date[0]=atoi(date1);
+            p->date[1]=atoi(date2);
+            p->date[2]=atoi(date3);
+
+
+            printf("请输入星期：");
+            scanf("%d",&p->week);
+            printf("请输入时间(输入方式：时：分，例如12:34，输入12：34)：");
+            char time1[3];
+            char time2[3];
+            char time0[5];
+            scanf("%s",time0);
+            time1[0]=time0[0];
+            time1[1]=time0[1];
+            time1[2]='\0';
+            time2[0]=time0[2];
+            time2[1]=time0[3];
+            time2[2]='\0';
+            p->time[0]=atoi(time1);
+            p->time[1]=atoi(time2);
+            
+            printf("请输入价格：");
+            scanf("%f",&p->price);
+            printf("请输入折扣：");
+            scanf("%f",&p->discount);
+            printf("请输入座位数：");
+            int max_seat=p->max_seat;
+            scanf("%d",&p->max_seat);
+            p->remain_seat=p->remain_seat+p->max_seat-max_seat;
+            char line_no_str[100]="\0" ;
+            line_no_str[0]=date1[2];
+            line_no_str[1]=date1[3];
+            strcat(line_no_str,date2);
+            strcat(line_no_str,date3);
+            strcat(line_no_str,time0);
+            p->line_no=atoll(line_no_str);
+            WriteLineList(L,"../References/plane.csv");
+            char plane_path[100]="../References/Booked/booked";
+            char plane_no_str[10]="\0" ;
+            char plane_path2[100]="../References/Booking/booking";
+            sprintf(plane_no_str,"%d",p->plane_no);
+            strcat(plane_path,plane_no_str);
+            strcat(plane_path2,plane_no_str);
+            strcat(plane_path2,".csv");
+            strcat(plane_path,".csv");
+            if(p->booked==NULL)
+            {
+                p->booked=InitBookedList();
+                CreateBookedList(p->booked,plane_path);
+
+            }
+            if (p->booking==NULL)
+            {
+                p->booking=InitBookingList(p->booking);
+                InputBookingList(p->booking,plane_path2);
+            }
+            if(LengthBookedList(p->booked)==0)
+            {
+                printf("修改成功，且该航班无人购买\n");
+                return;
+            }
+            while (p->booked->next!=NULL)
+            {
+                char seat_no_str[5]="\0" ;
+                char orderform_no_str[100]="\0" ;
+                sprintf(seat_no_str,"%d",p->booked->seat_no);
+                strcat(orderform_no_str,line_no_str);
+                strcat(orderform_no_str,seat_no_str);
+                p->booked->orderform_no=atoll(orderform_no_str);
+                p->booked=p->booked->next;
+            }
+            UpdateBookedList(p->booked,plane_path);
+            if(LengthBookingList(p->booking)==0)
+            {
+                printf("修改成功，且该航班无人预定\n");
+                return;
+            }
+            Booking *b = p->booking->booking_head;
+            
+            while (b->next!=p->booking->booking_tail)
+            {
+                b->line_no=p->line_no;
+                b->date[0]=p->date[0];
+                b->date[1]=p->date[1];
+                b->date[2]=p->date[2];
+                b->time[0]=p->time[0];
+                b->time[1]=p->time[1];
+                b=b->next;
+            }
+
+            p->booking->booking_tail->line_no=p->line_no;
+            p->booking->booking_tail->date[0]=p->date[0];
+            p->booking->booking_tail->date[1]=p->date[1];
+            p->booking->booking_tail->date[2]=p->date[2];
+            p->booking->booking_tail->time[0]=p->time[0];
+            p->booking->booking_tail->time[1]=p->time[1];
+
+            DataupBookingList(p->booking,plane_path2);
+            printf("修改成功！\n");
+            return;
+        }
+        p = p->next;
+    }
+    printf("未找到该航班！\n");
+}
+
+
+
+int main()
+{
+    Linelist *L = InitLineList();
+    ReadLineList(L,"../References/plane.csv");
+    PrintLineList(L);
+    printf("航班数量：%d\n",LengthLineList(L));
+    // L= AddLineList(L);
+    PrintLineList(L);
+    printf("航班数量：%d\n",LengthLineList(L));
+    ModifyLineList(L);
+    PrintLineList(L);
+    return 0;
+
+}
 
 
 

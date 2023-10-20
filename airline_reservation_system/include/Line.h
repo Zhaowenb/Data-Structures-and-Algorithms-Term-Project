@@ -4,6 +4,7 @@
 #include "booking.h"
 #include"booked.h"
 
+
 typedef struct Linelist
 {
     //航班信息
@@ -132,7 +133,21 @@ void ReadLineList(Linelist *L,char *filename);
 */
 void WriteLineList(Linelist *L,char *filename);
 
+/*
+    添加航班
+    函数名：AddLineList
+    参数：Linelist *L
+    返回值：Linelist *L
+*/
+Linelist *AddLineList(Linelist *L);
 
+/*
+    修改航班
+    函数名：ModifyLineList
+    参数：Linelist *L
+    返回值：无
+*/
+void ModifyLineList(Linelist *L);
 
 
 #endif// _LINE_H_
