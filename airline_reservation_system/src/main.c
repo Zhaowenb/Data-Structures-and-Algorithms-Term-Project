@@ -152,6 +152,39 @@ void case3(Linelist *L)
     }
     printf("未找到订单号，请检查输入是否正确！\n");
 }
+int password()
+{
+     int a=0;
+    char username[20]; //用户名
+    char password[20]; //密码
+    char input1[20]; //用户输入缓冲区
+    char input[20]; //用户输入缓冲区
+    strcpy(username, "admin"); //预设用户名为admin
+    strcpy(password, "123456"); //预设密码为123456
+    printf("请输入用户名：\n");
+    scanf("%s", input1); //获取用户名
+    printf("请输入密码：\n");
+    scanf("%s", input); //获取密码
+    if(strcmp(username, input1) == 0) //如果用户名正确，继续判断密码
+    {
+        if(strcmp(password, input) == 0) //如果密码正确，输出登录成功
+        {
+            a=1;
+            printf("\n登录成功！\n");
+            return a;
+        }
+        else //如果密码错误，输出登录失败
+        {
+            printf("\n密码错误！\n");
+            return a;
+        }
+    }
+    else //如果用户名错误，输出登录失败
+    {
+        printf("\n用户名错误！\n");
+        return a;
+    }
+}
 void case4(Linelist *L)
 {
     int a;

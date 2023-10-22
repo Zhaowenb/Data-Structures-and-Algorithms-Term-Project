@@ -571,20 +571,20 @@ void ModifyLineList(Linelist *L)
 
 
 
-int main()
-{
-    Linelist *L = InitLineList();
-    ReadLineList(L,"../References/plane.csv");
-    PrintLineList(L);
-    printf("航班数量：%d\n",LengthLineList(L));
-    // L= AddLineList(L);
-    PrintLineList(L);
-    printf("航班数量：%d\n",LengthLineList(L));
-    ModifyLineList(L);
-    PrintLineList(L);
-    return 0;
+// int main()
+// {
+//     Linelist *L = InitLineList();
+//     ReadLineList(L,"../References/plane.csv");
+//     PrintLineList(L);
+//     printf("航班数量：%d\n",LengthLineList(L));
+//     // L= AddLineList(L);
+//     PrintLineList(L);
+//     printf("航班数量：%d\n",LengthLineList(L));
+//     ModifyLineList(L);
+//     PrintLineList(L);
+//     return 0;
 
-}
+// }
 
 
 
