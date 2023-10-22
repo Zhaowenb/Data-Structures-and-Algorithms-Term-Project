@@ -152,7 +152,48 @@ void case3(Linelist *L)
     }
     printf("未找到订单号，请检查输入是否正确！\n");
 }
-void case4(){
+void case4(Linelist *L)
+{
+    int a;
+    a=password();
+    while(a)
+    {
+        printf("1.添加航班\n");
+        printf("2.删除航班\n");
+        printf("3.修改航班\n");
+        printf("4.退出管理系统\n");
+        printf("请输入您的选择：");
+        int choice;
+        scanf("%d",&choice);
+        switch (choice)
+        {
+        case 1:
+            printf("正在添加航班，请稍后...\n");
+            L=AddLineList(L);
+            break;
+        case 2:
+            printf("请输入要删除的航班号：");
+            unsigned long line_no;
+            scanf("%lu",&line_no);
+            printf("正在删除航班，请稍后...\n");
+            DeleteLineList(L,line_no);
+            WriteLineList(L,file_path);
+            printf("删除航班成功！\n");
+            break;
+        case 3:
+            ModifyLineList(L);
+            break;
+        case 4:
+            return;
+            break;
+        default:
+            break;
+        }
+    }
+
+
+
+
     
 }
 
