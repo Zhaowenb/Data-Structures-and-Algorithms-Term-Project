@@ -1,6 +1,8 @@
-CMakeFiles/main2.dir/src/booking.c.o: \
- /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/booking.c \
+CMakeFiles/main.dir/src/main.c.o: \
+ /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/main.c \
  /usr/include/stdc-predef.h \
+ /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/../include/main.h \
+ /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/../include/Line.h \
  /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/../include/booking.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -51,4 +53,12 @@ CMakeFiles/main2.dir/src/booking.c.o: \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/strings.h
+ /usr/include/strings.h \
+ /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/../include/booked.h \
+ /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd_ext.h /usr/include/locale.h \
+ /usr/include/x86_64-linux-gnu/bits/locale.h

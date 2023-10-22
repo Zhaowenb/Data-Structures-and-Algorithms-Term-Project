@@ -69,10 +69,24 @@ include CMakeFiles/main.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/main.dir/flags.make
 
+CMakeFiles/main.dir/src/main.c.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/main.c.o: /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/main.c
+CMakeFiles/main.dir/src/main.c.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/main.dir/src/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/main.c.o -MF CMakeFiles/main.dir/src/main.c.o.d -o CMakeFiles/main.dir/src/main.c.o -c /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/main.c
+
+CMakeFiles/main.dir/src/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/src/main.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/main.c > CMakeFiles/main.dir/src/main.c.i
+
+CMakeFiles/main.dir/src/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/src/main.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/main.c -o CMakeFiles/main.dir/src/main.c.s
+
 CMakeFiles/main.dir/src/Line.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/Line.c.o: /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/Line.c
 CMakeFiles/main.dir/src/Line.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/main.dir/src/Line.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/src/Line.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/Line.c.o -MF CMakeFiles/main.dir/src/Line.c.o.d -o CMakeFiles/main.dir/src/Line.c.o -c /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/Line.c
 
 CMakeFiles/main.dir/src/Line.c.i: cmake_force
@@ -86,7 +100,7 @@ CMakeFiles/main.dir/src/Line.c.s: cmake_force
 CMakeFiles/main.dir/src/booking.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/booking.c.o: /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/booking.c
 CMakeFiles/main.dir/src/booking.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/src/booking.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/main.dir/src/booking.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/booking.c.o -MF CMakeFiles/main.dir/src/booking.c.o.d -o CMakeFiles/main.dir/src/booking.c.o -c /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/booking.c
 
 CMakeFiles/main.dir/src/booking.c.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/main.dir/src/booking.c.s: cmake_force
 CMakeFiles/main.dir/src/booked.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/booked.c.o: /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/booked.c
 CMakeFiles/main.dir/src/booked.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/main.dir/src/booked.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/main.dir/src/booked.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/booked.c.o -MF CMakeFiles/main.dir/src/booked.c.o.d -o CMakeFiles/main.dir/src/booked.c.o -c /workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/src/booked.c
 
 CMakeFiles/main.dir/src/booked.c.i: cmake_force
@@ -113,6 +127,7 @@ CMakeFiles/main.dir/src/booked.c.s: cmake_force
 
 # Object files for target main
 main_OBJECTS = \
+"CMakeFiles/main.dir/src/main.c.o" \
 "CMakeFiles/main.dir/src/Line.c.o" \
 "CMakeFiles/main.dir/src/booking.c.o" \
 "CMakeFiles/main.dir/src/booked.c.o"
@@ -120,12 +135,13 @@ main_OBJECTS = \
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
+main: CMakeFiles/main.dir/src/main.c.o
 main: CMakeFiles/main.dir/src/Line.c.o
 main: CMakeFiles/main.dir/src/booking.c.o
 main: CMakeFiles/main.dir/src/booked.c.o
 main: CMakeFiles/main.dir/build.make
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspaces/Data-Structures-and-Algorithms-Term-Project/airline_reservation_system/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

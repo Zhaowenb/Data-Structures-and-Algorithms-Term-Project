@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/src/booked.c.o.d"
   "CMakeFiles/main.dir/src/booking.c.o"
   "CMakeFiles/main.dir/src/booking.c.o.d"
+  "CMakeFiles/main.dir/src/main.c.o"
+  "CMakeFiles/main.dir/src/main.c.o.d"
   "main"
   "main.pdb"
 )
