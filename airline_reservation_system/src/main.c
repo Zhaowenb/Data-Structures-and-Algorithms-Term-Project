@@ -240,8 +240,13 @@ int main()
     // curs_set(0);
     // attron(A_BOLD); //开启粗体属性
    Linelist *L = InitAll();
+   printf("正在初始化系统，请稍后...\n");
+  
     while (flag==0)
     {
+        printf("按回车继续\n");
+        getchar();
+        printf("\33[2J");
         printf("欢迎使用航空订票系统！\n");
         printf("1.查询航班信息\n");
         printf("2.客票订票\n");
