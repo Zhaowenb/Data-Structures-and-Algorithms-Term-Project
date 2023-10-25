@@ -337,10 +337,11 @@ Linelist *AddLineList(Linelist *L)
     Linelist *p = (Linelist *)malloc(sizeof(Linelist));
     printf("请输入目的地：");
     p->destination[0] = '\0'; //清空字符串
+    getchar(); //清空缓冲区
     fgets(p->destination, 100, stdin); 
     p->destination[strlen(p->destination) - 1] = '\0'; //去掉回车
     p->plane_no=LengthLineList(L)+1;
-    printf("请输入日期(输入方式：年-月-日，例如2023.04.26，输入2023-04-26)：");
+    printf("请输入日期(输入方式：年-月-日，例如2023.04.26，输入20230426)：");
     char date1[5];
     char date2[3];
     char date3[3];
@@ -360,14 +361,9 @@ Linelist *AddLineList(Linelist *L)
     p->date[0]=atoi(date1);
     p->date[1]=atoi(date2);
     p->date[2]=atoi(date3);
-    printf("%s\n",date1);
-    printf("%s\n",date2);
-    printf("%s\n",date3);
-    printf("%d\n",p->date[0]);
-    printf("%d\n",p->date[1]);
     printf("请输入星期：");
     scanf("%d",&p->week);
-    printf("请输入时间(输入方式：时：分，例如12:34，输入12：34)：");
+    printf("请输入时间(输入方式：时：分，例如12:34，输入1234)：");
     char time1[3];
     char time2[3];
     char time0[5];
@@ -378,13 +374,9 @@ Linelist *AddLineList(Linelist *L)
     time2[0]=time0[2];
     time2[1]=time0[3];
     time2[2]='\0';
-    printf("%s\n",time1);
-    printf("%s\n",time2);
     
     p->time[0]=atoi(time1);
     p->time[1]=atoi(time2);
-    printf("%s\n",time1);
-    printf("%s\n",time2);
     printf("请输入价格：");
     scanf("%f",&p->price);
     printf("请输入折扣：");
@@ -396,9 +388,7 @@ Linelist *AddLineList(Linelist *L)
     line_no_str[0]=date1[2];
     line_no_str[1]=date1[3];
     strcat(line_no_str,date2);
-    printf("%s\n",line_no_str);
     strcat(line_no_str,date3);
-    printf("%s\n",line_no_str);
     strcat(line_no_str,time1);
     strcat(line_no_str,time2);
     p->line_no=atoll(line_no_str)*1000+p->plane_no;
@@ -470,7 +460,7 @@ void ModifyLineList(Linelist *L)
 
             printf("请输入星期：");
             scanf("%d",&p->week);
-            printf("请输入时间(输入方式：时：分，例如12:34，输入12：34)：");
+            printf("请输入时间(输入方式：时：分，例如12:34，输入1234)：");
             char time1[3];
             char time2[3];
             char time0[5];
@@ -493,11 +483,25 @@ void ModifyLineList(Linelist *L)
             scanf("%d",&p->max_seat);
             p->remain_seat=p->remain_seat+p->max_seat-max_seat;
             char line_no_str[100]="\0" ;
+            sprintf(line_no_str,"%llu",p->line_no);
             line_no_str[0]=date1[2];
             line_no_str[1]=date1[3];
-            strcat(line_no_str,date2);
-            strcat(line_no_str,date3);
-            strcat(line_no_str,time0);
+            line_no_str[2]=date2[0];
+            line_no_str[3]=date2[1];
+            line_no_str[4]=date3[0];
+            line_no_str[5]=date3[1];
+            line_no_str[6]=time1[0];
+            line_no_str[7]=time1[1];
+            line_no_str[8]=time2[0];
+            line_no_str[9]=time2[1];
+            // line_no_str[0]=date1[2];
+            // line_no_str[1]=date1[3];
+            // strcat(line_no_str,date2);
+            // strcat(line_no_str,date3);
+            // strcat(line_no_str,time0);
+            // char plane_no_str[10]="\0" ;
+            // sprintf(plane_no_str,"%d",p->plane_no);
+            // strcat(line_no_str,
             p->line_no=atoll(line_no_str);
             WriteLineList(L,"../References/plane.csv");
             char plane_path[100]="../References/Booked/booked";

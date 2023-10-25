@@ -2,6 +2,7 @@
 
 #define file_path "../References/plane.csv"
 int flag = 0;
+
 /*
     初始化全部链表和队列,并导入csv文件
     函数名：InitAll
@@ -14,7 +15,16 @@ Linelist *InitAll()
     ReadLineList(L, file_path);
     return L;
 }
-void case2(Linelist *L){printf("请输入目的地\n");
+
+/*
+    
+
+
+*/
+void case2(Linelist *L)
+
+{
+    printf("请输入目的地\n");
             char destination[100]; //目的地
             destination[0] = '\0'; //清空字符串
             getchar(); //清空缓冲区
@@ -244,9 +254,9 @@ int main()
   
     while (flag==0)
     {
-        printf("按回车继续\n");
-        getchar();
-        printf("\33[2J");
+        // printf("按回车继续\n");
+        // getchar();
+        // printf("\33[2J");
         printf("欢迎使用航空订票系统！\n");
         printf("1.查询航班信息\n");
         printf("2.客票订票\n");
@@ -272,7 +282,7 @@ int main()
             printf("请输入时间(输入方式：时分，例如12:34，输入1234)\n");
             char time[4];
             scanf("%s", time);
-
+            printf("正在查询航班信息，请稍后...\n");
             Linelist *p=SearchLineList(L, destination,date,time);
             if(p==NULL)
             {
